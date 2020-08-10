@@ -14,6 +14,8 @@
         android:layout_marginTop="130dp"
         android:layout_marginEnd="162dp"
         android:text="Detail"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
         android:onClick="onClickChoixDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
