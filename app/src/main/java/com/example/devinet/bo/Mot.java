@@ -8,12 +8,12 @@ import androidx.room.PrimaryKey;
 public class Mot {
     @PrimaryKey(autoGenerate = true)
     private int idMot;
-    private byte img;
+    private String img;
     private String mot;
     private String proposition;
     private int categorie;
 
-    public Mot(int idMot, byte img, String mot, String proposition, int categorie) {
+    public Mot(int idMot, String img, String mot, String proposition, int categorie) {
         this.idMot = idMot;
         this.img = img;
         this.mot = mot;
@@ -29,11 +29,11 @@ public class Mot {
         this.idMot = idMot;
     }
 
-    public byte getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(byte img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
