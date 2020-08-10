@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.Proposition"></activity>
-        <activity android:name=".activities.ResultatDetail" />
+        <activity android:name=".activities.ResultatDetailActivity" />
         <activity android:name=".activities.ChoixListNiveau" />
         <activity android:name=".activities.SelectionNiveauActivity" />
         <activity android:name=".activities.AProposActivity" />

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.devinet.R;
 
-public class ResultatDetail extends AppCompatActivity {
+public class ResultatDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
