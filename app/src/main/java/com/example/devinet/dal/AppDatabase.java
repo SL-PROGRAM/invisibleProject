@@ -38,7 +38,7 @@ public abstract class AppDatabase extends RoomDatabase
      * Permet de fournir une instance de la dao Categorie aux couches supérieures.
      * @return
      */
-    public abstract CategorieDAO getCategorie();
+    public abstract CategorieDAO getCategorieDAO();
 
     public static AppDatabase getInstanceCategorie(Context context)
     {
