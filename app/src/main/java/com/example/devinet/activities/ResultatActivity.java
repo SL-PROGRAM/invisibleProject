@@ -23,21 +23,6 @@ public class ResultatActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_back:
-                /* DO EDIT */
-                return true;
-            case R.id.action_parametres:
-                /* DO ADD */
-                return true;
-            case R.id.action_aPropos:
-                /* DO DELETE */
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public void onClickChoixDetail(View view) {
         Intent intent = new Intent(this, ResultatDetailActivity.class);
         startActivity(intent);

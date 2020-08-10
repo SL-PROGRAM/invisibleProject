@@ -12,8 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.devinet.R;
@@ -26,7 +24,6 @@ import com.example.devinet.repository.MotBddRepository;
 import com.example.devinet.view_model.CategorieVM;
 import com.example.devinet.view_model.MotVM;
 import com.facebook.stetho.Stetho;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -80,21 +77,6 @@ public class MenuActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_back:
-                /* DO EDIT */
-                return true;
-            case R.id.action_parametres:
-                /* DO ADD */
-                return true;
-            case R.id.action_aPropos:
-                /* DO DELETE */
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public void onClickBtnJouer(View view) {
         Intent intent = new Intent(this,SelectionNiveauActivity.class);
         startActivity(intent);
@@ -116,8 +98,8 @@ public class MenuActivity extends AppCompatActivity {
         myPopup = new Dialog(this);
 
         myPopup.setContentView(R.layout.popup);
-        TextView quitter = (TextView) myPopup.findViewById(R.id.action_quitter);
-        TextView annuler = (TextView) myPopup.findViewById(R.id.action_annuler);
+        TextView quitter =  myPopup.findViewById(R.id.action_quitter);
+        TextView annuler =  myPopup.findViewById(R.id.action_annuler);
 
         quitter.setOnClickListener(new View.OnClickListener() {
             @Override

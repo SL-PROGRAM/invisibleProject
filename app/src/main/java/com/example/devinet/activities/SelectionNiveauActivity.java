@@ -23,21 +23,6 @@ public class SelectionNiveauActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_back:
-                /* DO EDIT */
-                return true;
-            case R.id.action_parametres:
-                /* DO ADD */
-                return true;
-            case R.id.action_aPropos:
-                /* DO DELETE */
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public void onClickChoixListe(View view) {
         Intent intent = new Intent(this,ChoixListNiveau.class);
         startActivity(intent);

@@ -11,9 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.example.devinet.R;
 
@@ -27,7 +25,7 @@ public class ParametreActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametre);
 
-        mySwitchSon = (SwitchCompat) findViewById(R.id.switch_son);
+        mySwitchSon = findViewById(R.id.switch_son);
         mySwitchSon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -44,7 +42,7 @@ public class ParametreActivity extends AppCompatActivity{
             }
         });
 
-        mySwitchVibrate = (SwitchCompat) findViewById(R.id.switch_vibration);
+        mySwitchVibrate = findViewById(R.id.switch_vibration);
         mySwitchVibrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -69,21 +67,6 @@ public class ParametreActivity extends AppCompatActivity{
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_back:
-                /* DO EDIT */
-                return true;
-            case R.id.action_parametres:
-                /* DO ADD */
-                return true;
-            case R.id.action_aPropos:
-                /* DO DELETE */
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public void onClickActionBack(MenuItem item) {
         super.onBackPressed();
     }
@@ -99,11 +82,6 @@ public class ParametreActivity extends AppCompatActivity{
     }
 
     public void onClickActionAccueil(MenuItem item) {
-        Intent intent = new Intent(this,MenuActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickActionBackMenu(View view) {
         Intent intent = new Intent(this,MenuActivity.class);
         startActivity(intent);
     }
