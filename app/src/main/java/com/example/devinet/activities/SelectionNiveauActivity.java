@@ -1,6 +1,7 @@
 package com.example.devinet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.devinet.R;
+import com.example.devinet.activities.adapteur.NiveauAdapteur;
 
 public class SelectionNiveauActivity extends AppCompatActivity {
 
@@ -16,6 +18,11 @@ public class SelectionNiveauActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection_niveau);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,14 +1,21 @@
 package com.example.devinet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import com.example.devinet.R;
+import com.example.devinet.activities.adapteur.NiveauAdapteur;
+
+import java.util.List;
 
 public class ChoixListNiveau extends AppCompatActivity {
 
