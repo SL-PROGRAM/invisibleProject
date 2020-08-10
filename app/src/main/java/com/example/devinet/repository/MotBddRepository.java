@@ -42,7 +42,7 @@ public class MotBddRepository implements IMotRepository {
     }
 
     @Override
-    public void update(Mot article) {
+    public void update(Mot mot) {
         //Je créé un nouveau thread(ouvrier)
         new AsyncTask<Mot, Void, Void>() {
             //Je lui dis quoi faire
@@ -52,7 +52,7 @@ public class MotBddRepository implements IMotRepository {
                 motDAO.update(mots[0]);
                 return null;
             }//Je lui dis de le faire
-        }.execute(article);
+        }.execute(mot);
     }
 
     @Override
