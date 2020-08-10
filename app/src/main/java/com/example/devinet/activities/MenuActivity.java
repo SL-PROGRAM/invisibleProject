@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -44,5 +45,15 @@ public class MenuActivity extends AppCompatActivity {
     public void onClickBtnQuitter(View view) {
         finish();
         System.exit(0);
+    }
+
+    public void onClickBtnParametre(MenuItem item) {
+        Intent intent = new Intent(this,ParametreActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickBtnAPropos(MenuItem item) {
+        Intent intent = new Intent(this,AProposActivity.class);
+        startActivity(intent);
     }
 }
