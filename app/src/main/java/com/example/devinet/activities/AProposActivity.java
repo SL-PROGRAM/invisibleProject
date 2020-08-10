@@ -19,6 +19,8 @@ public class AProposActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        menu.findItem(R.id.action_aPropos).setVisible(false);
+        menu.findItem(R.id.action_accueil).setVisible(false);
         return true;
     }
 

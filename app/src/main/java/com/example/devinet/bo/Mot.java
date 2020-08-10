@@ -11,9 +11,9 @@ public class Mot {
     private byte img;
     private String mot;
     private String proposition;
-    private Categorie categorie;
+    private int categorie;
 
-    public Mot(int idMot, byte img, String mot, String proposition, Categorie categorie) {
+    public Mot(int idMot, byte img, String mot, String proposition, int categorie) {
         this.idMot = idMot;
         this.img = img;
         this.mot = mot;
@@ -53,11 +53,11 @@ public class Mot {
         this.proposition = proposition;
     }
 
-    public Categorie getCategorie() {
+    public int getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
+    public void setCategorie(int categorie) {
         this.categorie = categorie;
     }
 

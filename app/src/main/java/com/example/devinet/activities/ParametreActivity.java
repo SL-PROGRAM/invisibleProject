@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.devinet.R;
 
@@ -20,6 +19,8 @@ public class ParametreActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        menu.findItem(R.id.action_parametres).setVisible(false);
+        menu.findItem(R.id.action_accueil).setVisible(false);
         return true;
     }
 
