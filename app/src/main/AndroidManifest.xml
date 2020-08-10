@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ProposerActivity"></activity>
+        <activity android:name=".activities.Proposition"></activity>
+        <activity android:name=".activities.ResultatDetail" />
+        <activity android:name=".activities.ChoixListNiveau" />
+        <activity android:name=".activities.SelectionNiveauActivity" />
+        <activity android:name=".activities.AProposActivity" />
+        <activity android:name=".activities.ProposerActivity" />
         <activity android:name=".activities.ResultatActivity" />
         <activity android:name=".activities.MenuActivity">
             <intent-filter>
