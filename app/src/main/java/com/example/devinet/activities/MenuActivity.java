@@ -1,26 +1,47 @@
 package com.example.devinet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.example.devinet.R;
+import com.example.devinet.bo.Categorie;
+import com.example.devinet.bo.Mot;
+import com.example.devinet.repository.CategorieBddRepository;
+import com.example.devinet.repository.ICategorieRepository;
+import com.example.devinet.repository.IMotRepository;
+import com.example.devinet.repository.MotBddRepository;
+import com.example.devinet.view_model.CategorieVM;
+import com.example.devinet.view_model.MotVM;
+import com.facebook.stetho.Stetho;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_menu);
 
         ICategorieRepository categorieRepository = new CategorieBddRepository(this);
         CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
 
-        LiveData<List<Categorie>> observateurCategorie = CategorieVM.get();
+        LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
 
         Categorie categorie = new Categorie(0, "Categorie pour test");
         categorieRepository.insert(categorie);
@@ -38,7 +59,7 @@ public class MenuActivity extends AppCompatActivity {
         IMotRepository motRepository = new MotBddRepository(this);
         MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
 
-        LiveData<List<Mot>> observateurMot = MotVM.get();
+        LiveData<List<Mot>> observateurMot = motVM.get();
         Mot mot = new Mot(0, "chemin de l'image", "Mot", "proposition", 1);
         motRepository.insert(mot);
 
@@ -51,10 +72,6 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
 
     }
 
@@ -94,8 +111,29 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onClickBtnQuitter(View view) {
-        finish();
-        System.exit(0);
+        final Dialog myPopup;
+
+        myPopup = new Dialog(this);
+
+        myPopup.setContentView(R.layout.popup);
+        TextView quitter = (TextView) myPopup.findViewById(R.id.action_quitter);
+        TextView annuler = (TextView) myPopup.findViewById(R.id.action_annuler);
+
+        quitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
+
+        annuler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myPopup.dismiss();
+            }
+        });
+        myPopup.show();
     }
 
     public void onClickActionParametres(MenuItem item) {
@@ -107,4 +145,5 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AProposActivity.class);
         startActivity(intent);
     }
+
 }
