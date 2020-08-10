@@ -6,21 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.devinet.R;
 
-public class ChoixListNiveau extends AppCompatActivity {
+public class Proposition extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choix_list_niveau);
-    }
-
-    public void onClickBtnList(View view) {
-        Intent intent = new Intent(this,JouerActivity.class);
-        startActivity(intent);
+        setContentView(R.layout.activity_proposition);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

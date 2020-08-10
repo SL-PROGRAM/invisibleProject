@@ -1,0 +1,11 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_parametres"
+        android:title="Paramètres"
+        android:onClick="onClickActionParametres"
+        app:showAsAction="collapseActionView"></item>
+    <item android:id="@+id/action_aPropos"
+        android:title="A propos"
+        android:onClick="onClickActionAPropos"
+        app:showAsAction="collapseActionView"></item>
+</menu>
