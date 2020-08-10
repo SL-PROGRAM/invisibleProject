@@ -14,7 +14,7 @@ public class Proposition extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.proposer_activity);
+        setContentView(R.layout.activity_proposer);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

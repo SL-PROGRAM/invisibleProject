@@ -1,36 +1,21 @@
 package com.example.devinet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.devinet.R;
-import com.example.devinet.bo.Categorie;
-import com.example.devinet.bo.Mot;
-import com.example.devinet.repository.CategorieBddRepository;
-import com.example.devinet.repository.ICategorieRepository;
-import com.example.devinet.repository.IMotRepository;
-import com.example.devinet.repository.MotBddRepository;
-import com.example.devinet.view_model.CategorieVM;
-import com.example.devinet.view_model.MotVM;
-
-import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_activity);
+        setContentView(R.layout.activity_menu);
 
         ICategorieRepository categorieRepository = new CategorieBddRepository(this);
         CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);

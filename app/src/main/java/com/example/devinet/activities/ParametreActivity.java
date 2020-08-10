@@ -1,20 +1,65 @@
 package com.example.devinet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.devinet.R;
 
-public class ParametreActivity extends AppCompatActivity {
+public class ParametreActivity extends AppCompatActivity{
+
+    SwitchCompat mySwitchSon = null;
+    SwitchCompat mySwitchVibrate = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.parametre_activity);
+        setContentView(R.layout.activity_parametre);
+
+        mySwitchSon = (SwitchCompat) findViewById(R.id.switch_son);
+        mySwitchSon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                    amanager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE,0);
+                    Toast.makeText(ParametreActivity.this, "SON ON", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                    amanager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
+                    Toast.makeText(ParametreActivity.this, "SON OFF", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mySwitchVibrate = (SwitchCompat) findViewById(R.id.switch_vibration);
+        mySwitchVibrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                    amanager.setRingerMode(2);
+                    Toast.makeText(ParametreActivity.this, "VIBRATE ON", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                    amanager.setRingerMode(1);
+                    Toast.makeText(ParametreActivity.this, "VIBRATE OFF", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,6 +99,11 @@ public class ParametreActivity extends AppCompatActivity {
     }
 
     public void onClickActionAccueil(MenuItem item) {
+        Intent intent = new Intent(this,MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickActionBackMenu(View view) {
         Intent intent = new Intent(this,MenuActivity.class);
         startActivity(intent);
     }
