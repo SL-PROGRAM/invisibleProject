@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.test.MainActivity">
+
+    <item
+        android:id="@+id/action_parametre"
+        android:orderInCategory="100"
+        android:title="Paramètre"
+        android:onClick="onClickBtnParametre"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_apropos"
+        android:orderInCategory="100"
+        android:title="A propos"
+        android:onClick="onClickBtnAPropos"
+        app:showAsAction="never" />
+
+</menu>
