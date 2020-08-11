@@ -17,8 +17,7 @@
         </activity>
         <activity android:name=".activities.JouerActivity"></activity>
         <activity android:name=".activities.ParametreActivity"></activity>
-        <activity android:name=".activities.Proposition"></activity>
-        <activity android:name=".activities.ResultatDetailActivity"></activity>
+            <activity android:name=".activities.ResultatDetailActivity"></activity>
         <activity android:name=".activities.ChoixListNiveau"></activity>
         <activity android:name=".activities.SelectionNiveauActivity"></activity>
         <activity android:name=".activities.AProposActivity"></activity>

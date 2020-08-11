@@ -15,6 +15,7 @@ public class MotBddRepository implements IMotRepository {
     private MotDAO motDAO;
     private LiveData<List<Mot>> get;
     private Mot getId;
+    private List<Mot> getNiveau;
 
     public MotBddRepository(Context context) {
         com.example.devinet.dal.AppDatabase bdd = com.example.devinet.dal.AppDatabase.getInstanceMot(context);
@@ -67,18 +68,19 @@ public class MotBddRepository implements IMotRepository {
     }
 
     @Override
-    public LiveData<List<Mot>> getNiveau(int niveau){
-        return motDAO.getNiveau(niveau);
+    public List<Mot> getMotNiveau(final int niveau){
+        Runnable task1 = new Runnable(){
+
+            @Override
+            public void run(){
+                getNiveau = motDAO.getNiveauList(niveau);
+            }
+        };
+        Thread thread1 = new Thread(task1);
+        thread1.start();
+        return getNiveau;
     }
 
-    @Override
-    public List<Mot> getMotNiveau(int niveau){
-        return motDAO.getNiveauList(niveau);
-    }
-    @Override
-    public LiveData<List<Mot>> getListNiveau(int niveau, int list){
-        return motDAO.getListNiveau(niveau, list);
-    }
 
     @Override
     public void update(Mot mot) {
