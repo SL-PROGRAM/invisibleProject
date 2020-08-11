@@ -2,6 +2,7 @@ package com.example.devinet.repository;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public class CategorieBddRepository implements ICategorieRepository {
 
     private CategorieDAO categorieDAO;
+    private LiveData<List<Categorie>> get = null;
+    private Categorie getId = null;
 
     public CategorieBddRepository(Context context) {
         com.example.devinet.dal.AppDatabase bdd = com.example.devinet.dal.AppDatabase.getInstanceCategorie(context);
@@ -33,12 +36,36 @@ public class CategorieBddRepository implements ICategorieRepository {
 
     @Override
     public LiveData<List<Categorie>> get() {
-        return categorieDAO.get();
+
+        Runnable task1 = new Runnable(){
+
+            @Override
+            public void run(){
+                get = categorieDAO.get();
+            }
+        };
+
+
+        Thread thread1 = new Thread(task1);
+        thread1.start();
+        return get;
+
     }
 
     @Override
-    public Categorie get(int id) {
-        return categorieDAO.get(id);
+    public Categorie get(final int id) {
+        Runnable task1 = new Runnable(){
+
+            @Override
+            public void run(){
+                getId = categorieDAO.get(id);
+            }
+        };
+
+
+        Thread thread1 = new Thread(task1);
+        thread1.start();
+        return getId;
     }
 
     @Override

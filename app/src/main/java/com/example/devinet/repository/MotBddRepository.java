@@ -13,6 +13,8 @@ import java.util.List;
 public class MotBddRepository implements IMotRepository {
 
     private MotDAO motDAO;
+    private LiveData<List<Mot>> get;
+    private Mot getId;
 
     public MotBddRepository(Context context) {
         com.example.devinet.dal.AppDatabase bdd = com.example.devinet.dal.AppDatabase.getInstanceMot(context);
@@ -33,12 +35,35 @@ public class MotBddRepository implements IMotRepository {
 
     @Override
     public LiveData<List<Mot>> get() {
-        return motDAO.get();
+        Runnable task1 = new Runnable(){
+
+            @Override
+            public void run(){
+                get = motDAO.get();
+            }
+        };
+
+
+        Thread thread1 = new Thread(task1);
+        thread1.start();
+        return get;
     }
 
+
     @Override
-    public Mot get(int id) {
-        return motDAO.get(id);
+    public Mot get(final int id) {
+        Runnable task1 = new Runnable(){
+
+            @Override
+            public void run(){
+                getId = motDAO.get(id);
+            }
+        };
+
+
+        Thread thread1 = new Thread(task1);
+        thread1.start();
+        return getId;
     }
 
     @Override

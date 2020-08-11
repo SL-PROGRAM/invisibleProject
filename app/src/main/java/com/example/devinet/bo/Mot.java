@@ -13,16 +13,14 @@ public class Mot {
     private String proposition;
     private int categorie;
     private int liste;
-    private int niveau;
 
-    public Mot(int idMot, String img, String mot, String proposition, int categorie, int liste, int niveau) {
+    public Mot(int idMot, String img, String mot, String proposition, int categorie, int liste) {
         this.idMot = idMot;
         this.img = img;
         this.mot = mot;
         this.proposition = proposition;
         this.categorie = categorie;
         this.liste = liste;
-        this.niveau = niveau;
     }
 
     public int getIdMot() {
@@ -73,14 +71,6 @@ public class Mot {
         this.liste = liste;
     }
 
-    public int getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(int niveau) {
-        this.niveau = niveau;
-    }
-
     @Override
     public String toString() {
         return "Mot{" +
@@ -90,7 +80,6 @@ public class Mot {
                 ", proposition='" + proposition + '\'' +
                 ", categorie=" + categorie +
                 ", liste=" + liste +
-                ", niveau=" + niveau +
                 '}';
     }
 }

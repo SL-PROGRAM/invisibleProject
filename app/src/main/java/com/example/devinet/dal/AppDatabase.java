@@ -29,7 +29,7 @@ public abstract class AppDatabase extends RoomDatabase
     {
         if(INSTANCE_MOT == null)
         {
-            INSTANCE_MOT = Room.databaseBuilder(context,AppDatabase.class,"devinette.db").build();
+            INSTANCE_MOT = Room.databaseBuilder(context,AppDatabase.class,"devinet.db").build();
         }
         return INSTANCE_MOT;
     }
@@ -44,7 +44,7 @@ public abstract class AppDatabase extends RoomDatabase
     {
         if(INSTANCE_CATEGORIE == null)
         {
-            INSTANCE_CATEGORIE = Room.databaseBuilder(context,AppDatabase.class,"devinette.db").build();
+            INSTANCE_CATEGORIE = Room.databaseBuilder(context,AppDatabase.class,"devinet.db").build();
         }
         return INSTANCE_CATEGORIE;
     }

@@ -34,12 +34,12 @@ public interface MotDAO {
     @Query("Delete from Mot")
     void delete();
 
-    @Query("SELECT * FROM Mot WHERE niveau = :niveau")
+    @Query("SELECT * FROM Mot WHERE categorie = :niveau")
     LiveData<List<Mot>> getNiveau(int niveau);
 
-    @Query("SELECT * FROM Mot WHERE (niveau = :niveau AND liste = :liste )")
+    @Query("SELECT * FROM Mot WHERE (categorie = :niveau AND liste = :liste )")
     LiveData<List<Mot>> getListNiveau(int niveau, int liste);
 
-    @Query("SELECT * FROM Mot WHERE niveau = :niveau")
+    @Query("SELECT * FROM Mot WHERE categorie = :niveau")
     List<Mot> getNiveauList(int niveau);
 }

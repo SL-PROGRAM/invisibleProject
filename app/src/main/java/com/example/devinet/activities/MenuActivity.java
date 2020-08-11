@@ -48,42 +48,39 @@ public class MenuActivity extends AppCompatActivity {
         String motSt = "Longueur";
         int longeurMot = FonctionUtils.longueurMotPourNiveau(motSt);
 
+        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
+        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
+        Categorie c = categorieVM.get(motSt.length());
 
-        Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", 1,FonctionUtils.definirNumeroList(longeurMot, this), longeurMot);
+
+
+        Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", motSt.length(),FonctionUtils.definirNumeroList(longeurMot, this));
         Log.i("test", "onCreate: "+mot.toString());
         motRepository.insert(mot);
 
-        observateurMot.observe(this, new Observer<List<Mot>>() {
-            @Override
-            public void onChanged(List<Mot> mots) {
-                for (Mot item : mots)
-                {
-                    Log.i("test mot", "Item : "+item.toString());
-                }
-            }
-        });
 
-
-        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
-
-        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
-
-
-        LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
-
-        Categorie categorie = new Categorie(0, "Categorie pour test");
-        categorieRepository.insert(categorie);
-
-        observateurCategorie.observe(this, new Observer<List<Categorie>>() {
-            @Override
-            public void onChanged(List<Categorie> categories) {
-
-                for (Categorie item : categories)
-                {
-                    Log.i("test categorie", "Item : "+item.toString());
-                }
-            }
-        });
+//        observateurMot.observe(this, new Observer<List<Mot>>() {
+//            @Override
+//            public void onChanged(List<Mot> mots) {
+//                for (Mot item : mots)
+//                {
+//                    Log.i("test mot", "Item : "+item.toString());
+//                }
+//            }
+//        });
+//
+//
+//      LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
+//        observateurCategorie.observe(this, new Observer<List<Categorie>>() {
+//            @Override
+//            public void onChanged(List<Categorie> categories) {
+//
+//                for (Categorie item : categories)
+//                {
+//                    Log.i("test categorie", "Item : "+item.toString());
+//                }
+//            }
+//        });
 
 
 
