@@ -57,7 +57,7 @@ public class MenuActivity extends AppCompatActivity {
         MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
 
         LiveData<List<Mot>> observateurMot = motVM.get();
-        Mot mot = new Mot(0, "chemin de l'image", "Mot", "proposition", 1);
+        Mot mot = new Mot(0, "chemin de l'image", "Mot", "proposition", 1, 1, 3);
         motRepository.insert(mot);
 
         observateurMot.observe(this, new Observer<List<Mot>>() {

@@ -7,9 +7,11 @@ import androidx.lifecycle.LiveData;
 
 import com.example.devinet.bo.Categorie;
 import com.example.devinet.dal.CategorieDAO;
+
 import java.util.List;
 
-public class CategorieBddRepository implements  ICategorieRepository {
+public class CategorieBddRepository implements ICategorieRepository {
+
     private CategorieDAO categorieDAO;
 
     public CategorieBddRepository(Context context) {

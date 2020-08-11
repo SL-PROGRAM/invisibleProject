@@ -36,3 +36,16 @@ dependencies {
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
     implementation 'com.facebook.stetho:stetho:1.5.1'
 }
+
+//Dependances pour Room
+dependencies {
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+}
+//Dependances pour stetho
+dependencies {
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+}
