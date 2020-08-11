@@ -41,10 +41,12 @@ public class MotBddRepository implements IMotRepository {
         return motDAO.get(id);
     }
 
+    @Override
     public LiveData<List<Mot>> getNiveau(int niveau){
         return motDAO.getNiveau(niveau);
     }
 
+    @Override
     public LiveData<List<Mot>> getListNiveau(int niveau, int list){
         return motDAO.getListNiveau(niveau, list);
     }
