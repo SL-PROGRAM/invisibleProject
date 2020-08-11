@@ -21,9 +21,11 @@ import com.example.devinet.repository.CategorieBddRepository;
 import com.example.devinet.repository.ICategorieRepository;
 import com.example.devinet.repository.IMotRepository;
 import com.example.devinet.repository.MotBddRepository;
+import com.example.devinet.utils.FonctionUtils;
 import com.example.devinet.view_model.CategorieVM;
 import com.example.devinet.view_model.MotVM;
 import com.facebook.stetho.Stetho;
+import com.facebook.stetho.common.Util;
 
 import java.util.List;
 
@@ -37,6 +39,11 @@ public class MenuActivity extends AppCompatActivity {
 
         ICategorieRepository categorieRepository = new CategorieBddRepository(this);
         CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
+
+
+        /*
+        ** test insertion de donnée
+         */
 
         LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
 
@@ -57,7 +64,7 @@ public class MenuActivity extends AppCompatActivity {
         MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
 
         LiveData<List<Mot>> observateurMot = motVM.get();
-        Mot mot = new Mot(0, "chemin de l'image", "Mot", "proposition", 1, 1, 3);
+        Mot mot = new Mot(0, "chemin de l'image", "Mot", "proposition", 1, 1, FonctionUtils.longueurMot("mot"));
         motRepository.insert(mot);
 
         observateurMot.observe(this, new Observer<List<Mot>>() {
@@ -70,6 +77,10 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+
+        /*
+         **  fin test insertion de donnée
+         */
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
