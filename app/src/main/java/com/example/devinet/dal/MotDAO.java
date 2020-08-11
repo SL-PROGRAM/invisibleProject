@@ -34,4 +34,12 @@ public interface MotDAO {
     @Query("Delete from Mot")
     void delete();
 
+    @Query("SELECT * FROM Mot WHERE niveau = :niveau")
+    LiveData<List<Mot>> getNiveau(int niveau);
+
+    @Query("SELECT * FROM Mot WHERE (niveau = :niveau AND liste = :liste )")
+    LiveData<List<Mot>> getListNiveau(int niveau, int liste);
+
+
+
 }

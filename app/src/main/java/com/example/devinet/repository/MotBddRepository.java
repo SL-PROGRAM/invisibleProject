@@ -41,6 +41,14 @@ public class MotBddRepository implements IMotRepository {
         return motDAO.get(id);
     }
 
+    public LiveData<List<Mot>> getNiveau(int niveau){
+        return motDAO.getNiveau(niveau);
+    }
+
+    public LiveData<List<Mot>> getListNiveau(int niveau, int list){
+        return motDAO.getListNiveau(niveau, list);
+    }
+
     @Override
     public void update(Mot mot) {
         //Je créé un nouveau thread(ouvrier)
