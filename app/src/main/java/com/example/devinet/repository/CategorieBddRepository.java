@@ -15,7 +15,7 @@ public class CategorieBddRepository implements ICategorieRepository {
     private CategorieDAO categorieDAO;
 
     public CategorieBddRepository(Context context) {
-        com.example.achat.dal.AppDatabase bdd = com.example.achat.dal.AppDatabase.getInstanceCategorie(context);
+        com.example.devinet.dal.AppDatabase bdd = com.example.devinet.dal.AppDatabase.getInstanceCategorie(context);
         categorieDAO = bdd.getCategorieDAO();
     }
 

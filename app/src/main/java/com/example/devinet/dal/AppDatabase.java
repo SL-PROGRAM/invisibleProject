@@ -1,4 +1,4 @@
-package com.example.achat.dal;
+package com.example.devinet.dal;
 
 import android.content.Context;
 

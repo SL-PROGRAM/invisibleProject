@@ -15,7 +15,7 @@ public class MotBddRepository implements IMotRepository {
     private MotDAO motDAO;
 
     public MotBddRepository(Context context) {
-        com.example.achat.dal.AppDatabase bdd = com.example.achat.dal.AppDatabase.getInstanceMot(context);
+        com.example.devinet.dal.AppDatabase bdd = com.example.devinet.dal.AppDatabase.getInstanceMot(context);
         motDAO = bdd.getMotDAO();
     }
 
@@ -46,6 +46,10 @@ public class MotBddRepository implements IMotRepository {
         return motDAO.getNiveau(niveau);
     }
 
+    @Override
+    public List<Mot> getMotNiveau(int niveau){
+        return motDAO.getNiveauList(niveau);
+    }
     @Override
     public LiveData<List<Mot>> getListNiveau(int niveau, int list){
         return motDAO.getListNiveau(niveau, list);
