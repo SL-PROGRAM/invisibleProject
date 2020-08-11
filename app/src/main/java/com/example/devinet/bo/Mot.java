@@ -84,11 +84,13 @@ public class Mot {
     @Override
     public String toString() {
         return "Mot{" +
-                "id=" + idMot +
-                ", img=" + img +
+                "idMot=" + idMot +
+                ", img='" + img + '\'' +
                 ", mot='" + mot + '\'' +
                 ", proposition='" + proposition + '\'' +
                 ", categorie=" + categorie +
+                ", liste=" + liste +
+                ", niveau=" + niveau +
                 '}';
     }
 }
