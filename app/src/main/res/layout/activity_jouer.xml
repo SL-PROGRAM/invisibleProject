@@ -7,22 +7,22 @@
     tools:context=".activities.JouerActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imgTrouve"
+        android:layout_width="250dp"
+        android:layout_height="220dp"
         android:layout_marginStart="141dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="142dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="0dp"
         android:layout_marginStart="178dp"
         android:layout_marginTop="30dp"
@@ -30,9 +30,82 @@
         android:indeterminate="false"
         android:max="10"
         android:progress="2"
-        android:progressTint="#F44336"
+        android:progressTint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgTrouve" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Proposition"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <TextView
+        android:id="@+id/tv_motMelange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Mot mélangé à retrouver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <TextView
+        android:id="@+id/circle_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/circle_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circle_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_motMelange" />
+
+    <TextView
+        android:id="@+id/croix_add"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_check_24"
+        android:onClick="onClickBtnValider"
+        app:layout_constraintBottom_toTopOf="@+id/circle_add"
+        app:layout_constraintEnd_toStartOf="@+id/circle_add"
+        app:layout_constraintStart_toEndOf="@+id/circle_add"
+        app:layout_constraintTop_toBottomOf="@+id/circle_add" />
+
+    <TextView
+        android:id="@+id/circle_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/circle_add"
+        android:onClick="onClickBtnNext"
+        app:layout_constraintEnd_toStartOf="@+id/circle_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_motMelange" />
+
+    <TextView
+        android:id="@+id/arrow_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_arrow_forward_24"
+        app:layout_constraintBottom_toTopOf="@+id/circle_next"
+        app:layout_constraintEnd_toStartOf="@+id/circle_next"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/circle_next"
+        app:layout_constraintTop_toBottomOf="@+id/circle_next" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
