@@ -37,27 +37,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
 
-        /*
-        ** test insertion de donnée
-         */
-        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
-        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
-
-
-        LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
-
-        Categorie categorie = new Categorie(0, "Categorie pour test");
-        categorieRepository.insert(categorie);
-
-        observateurCategorie.observe(this, new Observer<List<Categorie>>() {
-            @Override
-            public void onChanged(List<Categorie> categories) {
-                for (Categorie item : categories)
-                {
-                    Log.i("test categorie", "Item : "+item.toString());
-                }
-            }
-        });
+//        /*
+//        ** test insertion de donnée
+//         */
 
         IMotRepository motRepository = new MotBddRepository(this);
         MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
@@ -67,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
         int longeurMot = FonctionUtils.longueurMotPourNiveau(motSt);
 
 
-        Mot mot = new Mot(0, "chemin de l'image", "Mot", "proposition", 1, FonctionUtils.definirNumeroList(longeurMot, this), FonctionUtils.longueurMotPourNiveau(motSt));
+        Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", 1,FonctionUtils.definirNumeroList(longeurMot, this), longeurMot);
         Log.i("test", "onCreate: "+mot.toString());
         motRepository.insert(mot);
 
@@ -80,6 +62,30 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
+
+        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
+
+
+        LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
+
+        Categorie categorie = new Categorie(0, "Categorie pour test");
+        categorieRepository.insert(categorie);
+
+        observateurCategorie.observe(this, new Observer<List<Categorie>>() {
+            @Override
+            public void onChanged(List<Categorie> categories) {
+
+                for (Categorie item : categories)
+                {
+                    Log.i("test categorie", "Item : "+item.toString());
+                }
+            }
+        });
+
+
 
 
         /*
