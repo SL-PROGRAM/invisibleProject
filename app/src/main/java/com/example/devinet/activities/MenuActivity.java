@@ -37,9 +37,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
 
-//        /*
-//        ** test insertion de donnée
-//         */
+        /*
+        ** test insertion de donnée
+         */
 
         IMotRepository motRepository = new MotBddRepository(this);
         MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
@@ -52,12 +52,9 @@ public class MenuActivity extends AppCompatActivity {
         CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
         Categorie c = categorieVM.get(motSt.length());
 
-
-
         Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", motSt.length(),FonctionUtils.definirNumeroList(longeurMot, this));
         Log.i("test", "onCreate: "+mot.toString());
         motRepository.insert(mot);
-
 
 //        observateurMot.observe(this, new Observer<List<Mot>>() {
 //            @Override
@@ -68,7 +65,6 @@ public class MenuActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-//
 //
 //      LiveData<List<Categorie>> observateurCategorie = categorieVM.get();
 //        observateurCategorie.observe(this, new Observer<List<Categorie>>() {

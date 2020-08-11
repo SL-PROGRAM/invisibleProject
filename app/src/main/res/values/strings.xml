@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Devinet</string>
+    <string-array name="spinnerName">
+        <item>4 lettres</item>
+        <item>5 lettres</item>
+        <item>6 lettres</item>
+        <item>7 lettres</item>
+    </string-array>
 </resources>
