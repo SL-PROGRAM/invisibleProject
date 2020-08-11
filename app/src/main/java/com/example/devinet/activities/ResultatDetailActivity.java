@@ -15,6 +15,7 @@ public class ResultatDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat_detail);
+        getSupportActionBar().setTitle("Détail des résultats");
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -18,6 +18,7 @@ public class SelectionNiveauActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection_niveau);
+        getSupportActionBar().setTitle("Sélection du niveau");
     }
 
     @Override

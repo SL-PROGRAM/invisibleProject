@@ -24,6 +24,7 @@ public class ParametreActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametre);
+        getSupportActionBar().setTitle("Paramètres");
 
         mySwitchSon = findViewById(R.id.switch_son);
         mySwitchSon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

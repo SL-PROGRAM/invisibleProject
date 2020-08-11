@@ -15,6 +15,7 @@ public class JouerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jouer);
+        getSupportActionBar().setTitle("Jouer");
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -23,6 +23,7 @@ public class ChoixListNiveau extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_list_niveau);
+        getSupportActionBar().setTitle("Choix des listes");
     }
 
     public void onClickBtnList(View view) {

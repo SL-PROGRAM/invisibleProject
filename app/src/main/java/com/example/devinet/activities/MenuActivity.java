@@ -41,20 +41,20 @@ public class MenuActivity extends AppCompatActivity {
         ** test insertion de donnée
          */
 
-        IMotRepository motRepository = new MotBddRepository(this);
-        MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
-
-        LiveData<List<Mot>> observateurMot = motVM.get();
-        String motSt = "Longueur";
-        int longeurMot = FonctionUtils.longueurMotPourNiveau(motSt);
-
-        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
-        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
-        Categorie c = categorieVM.get(motSt.length());
-
-        Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", motSt.length(),FonctionUtils.definirNumeroList(longeurMot, this));
-        Log.i("test", "onCreate: "+mot.toString());
-        motRepository.insert(mot);
+//        IMotRepository motRepository = new MotBddRepository(this);
+//        MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
+//
+//        LiveData<List<Mot>> observateurMot = motVM.get();
+//        String motSt = "Longueur";
+//        int longeurMot = FonctionUtils.longueurMotPourNiveau(motSt);
+//
+//        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
+//        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
+//        Categorie c = categorieVM.get(motSt.length());
+//
+//        Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", motSt.length(),FonctionUtils.definirNumeroList(longeurMot, this));
+//        Log.i("test", "onCreate: "+mot.toString());
+//        motRepository.insert(mot);
 
 //        observateurMot.observe(this, new Observer<List<Mot>>() {
 //            @Override

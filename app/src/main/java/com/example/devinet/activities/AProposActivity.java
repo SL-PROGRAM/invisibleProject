@@ -15,6 +15,7 @@ public class AProposActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a_propos);
+        getSupportActionBar().setTitle("A propos");
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
