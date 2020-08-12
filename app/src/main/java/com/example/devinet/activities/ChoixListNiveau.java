@@ -49,6 +49,7 @@ public class ChoixListNiveau extends AppCompatActivity {
                     @Override
                     public void onChanged(List<Mot> mots) {
 
+                        Log.i("NIVEAU", categorie.toString());
                         List<Mot> motUniqueList = new ArrayList<>();
                         motUniqueList.add(mots.get(1));
                         for (int i = 2; i < mots.size(); i++) {
