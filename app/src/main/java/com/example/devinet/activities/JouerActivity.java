@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,17 +30,25 @@ public class JouerActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
-        final LiveData<List<Mot>> observateur = vm.get();
+        Intent intent = getIntent();
+        if (intent != null){
+            final Mot mot = intent.getParcelableExtra("mot");
+            if (mot != null){
 
-        observateur.observe(this, new Observer<List<Mot>>() {
-            @Override
-            public void onChanged(List<Mot> mots) {
-                ListView maListe = findViewById(R.id.lv_jouer_proposition);
-                CaseAdateur adapter = new CaseAdateur(JouerActivity.this,R.layout.activity_jouer,mots);
-                maListe.setAdapter(adapter);
+                MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
+                final LiveData<List<Mot>> observateur = vm.get();
+
+                observateur.observe(this, new Observer<List<Mot>>() {
+                    @Override
+                    public void onChanged(List<Mot> mots) {
+                        Log.i("MOT", mot.toString());
+                        ListView maListe = findViewById(R.id.lv_jouer_proposition);
+                        CaseAdateur adapter = new CaseAdateur(JouerActivity.this,R.layout.activity_jouer,mots);
+                        maListe.setAdapter(adapter);
+                    }
+                });
             }
-        });
+        }
     }
 
     @Override

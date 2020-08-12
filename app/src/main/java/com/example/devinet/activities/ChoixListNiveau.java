@@ -22,7 +22,6 @@ import com.example.devinet.bo.Mot;
 import com.example.devinet.view_model.CategorieVM;
 import com.example.devinet.view_model.MotVM;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChoixListNiveau extends AppCompatActivity {
@@ -39,30 +38,26 @@ public class ChoixListNiveau extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
-        final LiveData<List<Mot>> observateur = vm.getMotNiveauLD(8);
+        Intent intent = getIntent();
+        if (intent != null){
+            final Categorie categorie = intent.getParcelableExtra("categorie");
+            if (categorie != null){
 
-        observateur.observe(this, new Observer<List<Mot>>() {
-            @Override
-            public void onChanged(List<Mot> mots) {
+                MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
+                final LiveData<List<Mot>> observateur = vm.get();
 
-                List<Mot> motUniqueList = new ArrayList<>();
-                motUniqueList.add(mots.get(1));
-                for(int i = 2; i < mots.size(); i++){
-                    if(mots.get(i).getListe() != mots.get(i-1).getListe()){
-                        motUniqueList.add(mots.get(i));
+                observateur.observe(this, new Observer<List<Mot>>() {
+                    @Override
+                    public void onChanged(List<Mot> mots) {
+                        Log.i("OBJET", categorie.toString());
+                        ListView maListe = findViewById(R.id.listView_choix_list);
+                        ListAdapteur adapter = new ListAdapteur(ChoixListNiveau.this,R.layout.activity_choix_list_niveau,mots);
+                        maListe.setAdapter(adapter);
                     }
-                }
-                ListView maListe = findViewById(R.id.listView_choix_list);
-                ListAdapteur adapter = new ListAdapteur(ChoixListNiveau.this,R.layout.activity_choix_list_niveau,motUniqueList);
-                maListe.setAdapter(adapter);
-            }
-        });
-    }
+                });
 
-    public void onClickBtnList(View view) {
-        Intent intent = new Intent(this,JouerActivity.class);
-        startActivity(intent);
+            }
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
