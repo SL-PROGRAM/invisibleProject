@@ -15,15 +15,15 @@ import java.util.List;
 public class MotVM extends AndroidViewModel {
 
 
-    private IMotRepository articleRepository;
+    private IMotRepository motRepository;
 
     private LiveData<List<Mot>> observateur = null;
 
     public MotVM(@NonNull Application application)
     {
         super(application);
-        articleRepository = new MotBddRepository(application);
-        observateur = articleRepository.get();
+        motRepository = new MotBddRepository(application);
+        observateur = motRepository.get();
     }
 
     public LiveData<List<Mot>> get()
@@ -32,26 +32,34 @@ public class MotVM extends AndroidViewModel {
     }
 
     public Mot get(int id){
-        return articleRepository.get(id);
+        return motRepository.get(id);
     };
+
+    public List<Mot> getMotNiveau(int categorie){
+        return motRepository.getMotNiveau(categorie);
+    }
+
+    public LiveData<List<Mot>> getMotNiveauLD(int categorie){
+        return motRepository.getMotNiveauLD(categorie);
+    }
 
     void insert(Mot item)
     {
-        articleRepository.insert(item);
+        motRepository.insert(item);
     }
 
     void update(Mot item)
     {
-        articleRepository.update(item);
+        motRepository.update(item);
     }
 
     void delete(Mot item)
     {
-        articleRepository.delete(item);
+        motRepository.delete(item);
     }
 
     void delete()
     {
-        articleRepository.delete();
+        motRepository.delete();
     }
 }

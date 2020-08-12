@@ -14,7 +14,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="142dp"
         android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@drawable/hisoka"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

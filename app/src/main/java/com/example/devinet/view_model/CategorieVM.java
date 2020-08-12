@@ -15,15 +15,15 @@ import java.util.List;
 public class CategorieVM extends AndroidViewModel {
 
 
-    private ICategorieRepository articleRepository;
+    private ICategorieRepository categorieRepository;
 
     private LiveData<List<Categorie>> observateur = null;
 
     public CategorieVM(@NonNull Application application)
     {
         super(application);
-        articleRepository = new CategorieBddRepository(application);
-        observateur = articleRepository.get();
+        categorieRepository = new CategorieBddRepository(application);
+        observateur = categorieRepository.get();
     }
 
     public LiveData<List<Categorie>> get()
@@ -32,26 +32,26 @@ public class CategorieVM extends AndroidViewModel {
     }
 
     public Categorie get(int id){
-        return articleRepository.get(id);
+        return categorieRepository.get(id);
     };
 
     void insert(Categorie item)
     {
-        articleRepository.insert(item);
+        categorieRepository.insert(item);
     }
 
     void update(Categorie item)
     {
-        articleRepository.update(item);
+        categorieRepository.update(item);
     }
 
     void delete(Categorie item)
     {
-        articleRepository.delete(item);
+        categorieRepository.delete(item);
     }
 
     void delete()
     {
-        articleRepository.delete();
+        categorieRepository.delete();
     }
 }
