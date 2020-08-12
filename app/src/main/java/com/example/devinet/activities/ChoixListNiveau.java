@@ -32,32 +32,36 @@ public class ChoixListNiveau extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_list_niveau);
         getSupportActionBar().setTitle("Choix des listes");
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        if (intent != null) {
+            final Categorie categorie = intent.getParcelableExtra("categorie");
 
-        MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
-        final LiveData<List<Mot>> observateur = vm.getMotNiveauLD(8);
+            MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
+            final LiveData<List<Mot>> observateur = vm.getMotNiveauLD(categorie.getIdCat());
 
-        observateur.observe(this, new Observer<List<Mot>>() {
-            @Override
-            public void onChanged(List<Mot> mots) {
 
-                List<Mot> motUniqueList = new ArrayList<>();
-                motUniqueList.add(mots.get(1));
-                for(int i = 2; i < mots.size(); i++){
-                    if(mots.get(i).getListe() != mots.get(i-1).getListe()){
-                        motUniqueList.add(mots.get(i));
+            observateur.observe(this, new Observer<List<Mot>>() {
+                @Override
+                public void onChanged(List<Mot> mots) {
+
+                    List<Mot> motUniqueList = new ArrayList<>();
+                    motUniqueList.add(mots.get(1));
+                    for (int i = 2; i < mots.size(); i++) {
+                        if (mots.get(i).getListe() != mots.get(i - 1).getListe()) {
+                            motUniqueList.add(mots.get(i));
+                        }
                     }
+                    ListView maListe = findViewById(R.id.listView_choix_list);
+                    ListAdapteur adapter = new ListAdapteur(ChoixListNiveau.this, R.layout.activity_choix_list_niveau, motUniqueList);
+                    maListe.setAdapter(adapter);
                 }
-                ListView maListe = findViewById(R.id.listView_choix_list);
-                ListAdapteur adapter = new ListAdapteur(ChoixListNiveau.this,R.layout.activity_choix_list_niveau,motUniqueList);
-                maListe.setAdapter(adapter);
-            }
-        });
+            });
+        }
     }
 
     public void onClickBtnList(View view) {
