@@ -7,7 +7,7 @@
     tools:context=".activities.ChoixListNiveau">
 
     <ListView
-        android:id="@+id/list_choix_list"
+        android:id="@+id/listView_choix_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"

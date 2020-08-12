@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.devinet.R;
+import com.example.devinet.activities.adapteur.ListAdapteur;
 import com.example.devinet.activities.adapteur.NiveauAdapteur;
 import com.example.devinet.bo.Categorie;
 import com.example.devinet.bo.Mot;
@@ -42,8 +43,8 @@ public class ChoixListNiveau extends AppCompatActivity {
         observateur.observe(this, new Observer<List<Mot>>() {
             @Override
             public void onChanged(List<Mot> mots) {
-                ListView maListe = findViewById(R.id.listView);
-                ArrayAdapter adapter = new ArrayAdapter(ChoixListNiveau.this,R.layout.activity_choix_list_niveau,mots);
+                ListView maListe = findViewById(R.id.listView_choix_list);
+                ListAdapteur adapter = new ListAdapteur(ChoixListNiveau.this,R.layout.activity_choix_list_niveau,mots);
                 maListe.setAdapter(adapter);
             }
         });
