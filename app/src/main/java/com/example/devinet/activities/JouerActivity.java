@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,9 +23,12 @@ import com.example.devinet.bo.Mot;
 import com.example.devinet.view_model.MotVM;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JouerActivity extends AppCompatActivity {
+
+    List<Mot> motsList = new ArrayList<>();
 
     @Override
     protected void onResume() {
@@ -41,13 +45,18 @@ public class JouerActivity extends AppCompatActivity {
                 observateur.observe(this, new Observer<List<Mot>>() {
                     @Override
                     public void onChanged(List<Mot> mots) {
+                        motsList = mots;
                         Log.i("MOT", mot.toString());
-                        ListView maListe = findViewById(R.id.lv_jouer_proposition);
-                        CaseAdateur adapter = new CaseAdateur(JouerActivity.this,R.layout.activity_jouer,mots);
-                        maListe.setAdapter(adapter);
+//                        ListView maListe = findViewById(R.id.lv_jouer_proposition);
+//                        CaseAdateur adapter = new CaseAdateur(JouerActivity.this,R.layout.activity_jouer,mots);
+//                        maListe.setAdapter(adapter);
                     }
                 });
             }
+        }
+
+        for (Mot item : motsList){
+            Log.i("MOT LIST", "onResume: "+ item.toString());
         }
     }
 
