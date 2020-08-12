@@ -1,7 +1,6 @@
 package com.example.devinet.activities.adapteur;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +30,15 @@ public class NiveauAdapteur extends ArrayAdapter<Categorie>
         //On décompresse le fichier style_ligne_niveaux.xml
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View nouvelleLigne = li.inflate(R.layout.style_ligne_niveau,parent,false);
+
+        //On met les données dans la ligne
+
+        TextView titreNiveau = nouvelleLigne.findViewById(R.id.tv_niveau_nombre);
+        titreNiveau.setText(String.valueOf(getItem(position).getIdCat()));
+
+        TextView titreNiveauLettre = nouvelleLigne.findViewById(R.id.tv_titre_niveau_lettre);
+        titreNiveauLettre.setText(" - " + getItem(position).getNom());
+
 
         //On retourne la ligne
         return nouvelleLigne;

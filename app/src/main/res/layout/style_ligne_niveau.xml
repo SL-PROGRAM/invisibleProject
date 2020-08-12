@@ -18,19 +18,28 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <TextView
-            android:id="@+id/tv_titre_niveau"
+            android:id="@+id/tv_niveau"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="XXX"
+            android:text="Niveau"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_niveau_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:padding="10dp"
+            android:text="X"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_titre_niveau_lettre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
             android:padding="10dp"
-            android:layout_marginStart="85dp"
             android:text="XXX"
             android:textSize="18sp" />
 

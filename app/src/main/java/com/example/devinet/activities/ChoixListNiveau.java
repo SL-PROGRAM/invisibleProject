@@ -10,10 +10,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.devinet.R;
 import com.example.devinet.activities.adapteur.NiveauAdapteur;
+import com.example.devinet.bo.Categorie;
+import com.example.devinet.bo.Mot;
+import com.example.devinet.view_model.CategorieVM;
+import com.example.devinet.view_model.MotVM;
 
 import java.util.List;
 
@@ -24,6 +29,24 @@ public class ChoixListNiveau extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_list_niveau);
         getSupportActionBar().setTitle("Choix des listes");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
+        final LiveData<List<Mot>> observateur = vm.get();
+
+        observateur.observe(this, new Observer<List<Mot>>() {
+            @Override
+            public void onChanged(List<Mot> mots) {
+                ListView maListe = findViewById(R.id.listView);
+                ArrayAdapter adapter = new ArrayAdapter(ChoixListNiveau.this,R.layout.activity_choix_list_niveau,mots);
+                maListe.setAdapter(adapter);
+            }
+        });
     }
 
     public void onClickBtnList(View view) {

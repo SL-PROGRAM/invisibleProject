@@ -37,11 +37,13 @@ public class SelectionNiveauActivity extends AppCompatActivity {
         super.onResume();
 
         CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
-        LiveData<List<Categorie>> observateur = categorieVM.get();
+        final LiveData<List<Categorie>> observateur = categorieVM.get();
+
         observateur.observe(this, new Observer<List<Categorie>>() {
                     @Override
                     public void onChanged(List<Categorie> categories) {
                         Log.i("WOLOLO", "onChanged: "+categories.size());
+                        ListView maListe = findViewById(R.id.listView);
                         NiveauAdapteur niveauAdapteur = new NiveauAdapteur(SelectionNiveauActivity.this, R.layout.style_ligne_liste, categories);
                         maListe.setAdapter(niveauAdapteur);
                     }
