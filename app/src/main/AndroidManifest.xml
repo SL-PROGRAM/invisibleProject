@@ -10,16 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.MenuActivity">
+
+        </activity>
+        <activity android:name=".activities.JouerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.JouerActivity"></activity>
         <activity android:name=".activities.ParametreActivity"></activity>
             <activity android:name=".activities.ResultatDetailActivity"></activity>
-        <activity android:name=".activities.ChoixListNiveau"></activity>
-        <activity android:name=".activities.SelectionNiveauActivity"></activity>
+        <activity android:name=".activities.ChoixListNiveau">
+
+        </activity>
+        <activity android:name=".activities.SelectionNiveauActivity">
+
+        </activity>
         <activity android:name=".activities.AProposActivity"></activity>
         <activity android:name=".activities.ProposerActivity"></activity>
         <activity android:name=".activities.ResultatActivity"></activity>

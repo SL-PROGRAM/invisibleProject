@@ -19,6 +19,7 @@ import com.example.devinet.activities.adapteur.NiveauAdapteur;
 import com.example.devinet.bo.Categorie;
 import com.example.devinet.view_model.CategorieVM;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectionNiveauActivity extends AppCompatActivity {
@@ -42,7 +43,6 @@ public class SelectionNiveauActivity extends AppCompatActivity {
         observateur.observe(this, new Observer<List<Categorie>>() {
                     @Override
                     public void onChanged(List<Categorie> categories) {
-                        Log.i("WOLOLO", "onChanged: "+categories.size());
                         ListView maListe = findViewById(R.id.listView);
                         NiveauAdapteur niveauAdapteur = new NiveauAdapteur(SelectionNiveauActivity.this, R.layout.style_ligne_liste, categories);
                         maListe.setAdapter(niveauAdapteur);

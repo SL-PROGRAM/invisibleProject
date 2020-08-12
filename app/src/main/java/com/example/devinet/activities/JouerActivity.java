@@ -1,6 +1,9 @@
 package com.example.devinet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,13 +11,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.devinet.R;
+import com.example.devinet.activities.adapteur.CaseAdateur;
+import com.example.devinet.bo.Mot;
+import com.example.devinet.view_model.MotVM;
 
 import java.io.File;
+import java.util.List;
 
 public class JouerActivity extends AppCompatActivity {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
+        final LiveData<List<Mot>> observateur = vm.get();
+
+        observateur.observe(this, new Observer<List<Mot>>() {
+            @Override
+            public void onChanged(List<Mot> mots) {
+                ListView maListe = findViewById(R.id.lv_jouer_proposition);
+                CaseAdateur adapter = new CaseAdateur(JouerActivity.this,R.layout.activity_jouer,mots);
+                maListe.setAdapter(adapter);
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
