@@ -36,49 +36,18 @@ public class MotBddRepository implements IMotRepository {
 
     @Override
     public LiveData<List<Mot>> get() {
-        Runnable task1 = new Runnable(){
-
-            @Override
-            public void run(){
-                get = motDAO.get();
-            }
-        };
-
-
-        Thread thread1 = new Thread(task1);
-        thread1.start();
-        return get;
+       return motDAO.get();
     }
 
 
     @Override
     public Mot get(final int id) {
-        Runnable task1 = new Runnable(){
-
-            @Override
-            public void run(){
-                getId = motDAO.get(id);
-            }
-        };
-
-
-        Thread thread1 = new Thread(task1);
-        thread1.start();
-        return getId;
+        return motDAO.get(id);
     }
 
     @Override
     public List<Mot> getMotNiveau(final int niveau){
-        Runnable task1 = new Runnable(){
-
-            @Override
-            public void run(){
-                getNiveau = motDAO.getNiveauList(niveau);
-            }
-        };
-        Thread thread1 = new Thread(task1);
-        thread1.start();
-        return getNiveau;
+       return motDAO.getNiveauList(niveau);
     }
 
 
