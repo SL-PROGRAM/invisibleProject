@@ -8,8 +8,6 @@ import androidx.room.RoomDatabase;
 
 import com.example.devinet.bo.Categorie;
 import com.example.devinet.bo.Mot;
-import com.example.devinet.dal.CategorieDAO;
-import com.example.devinet.dal.MotDAO;
 
 
 @Database(entities = {Mot.class, Categorie.class}, exportSchema = false, version = 1)
@@ -27,7 +25,7 @@ public abstract class AppDatabase extends RoomDatabase
 
     public static AppDatabase getInstanceMot(Context context) {
         if (INSTANCE_MOT == null) {
-            INSTANCE_MOT = Room.databaseBuilder(context, AppDatabase.class, "devinetDB.db").build();
+            INSTANCE_MOT = Room.databaseBuilder(context, AppDatabase.class, "devinet.db").build();
         }
         return INSTANCE_MOT;
     }
@@ -42,7 +40,7 @@ public abstract class AppDatabase extends RoomDatabase
     {
         if(INSTANCE_CATEGORIE == null)
         {
-            INSTANCE_CATEGORIE = Room.databaseBuilder(context,AppDatabase.class,"devinetDB.db").build();
+            INSTANCE_CATEGORIE = Room.databaseBuilder(context,AppDatabase.class,"devinet.db").build();
         }
         return INSTANCE_CATEGORIE;
     }

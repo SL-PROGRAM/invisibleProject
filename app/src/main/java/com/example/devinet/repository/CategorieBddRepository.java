@@ -36,36 +36,13 @@ public class CategorieBddRepository implements ICategorieRepository {
 
     @Override
     public LiveData<List<Categorie>> get() {
-
-        Runnable task1 = new Runnable(){
-
-            @Override
-            public void run(){
-                get = categorieDAO.get();
-            }
-        };
-
-
-        Thread thread1 = new Thread(task1);
-        thread1.start();
-        return get;
+        return categorieDAO.get();
 
     }
 
     @Override
     public Categorie get(final int id) {
-        Runnable task1 = new Runnable(){
-
-            @Override
-            public void run(){
-                getId = categorieDAO.get(id);
-            }
-        };
-
-
-        Thread thread1 = new Thread(task1);
-        thread1.start();
-        return getId;
+        return categorieDAO.get(id);
     }
 
     @Override
