@@ -36,8 +36,8 @@ public interface MotDAO {
 
 
 
-    @Query("SELECT * FROM Mot WHERE (categorie = :niveau AND liste = :liste )")
-    LiveData<List<Mot>> getListNiveau(int niveau, int liste);
+    @Query("SELECT * FROM Mot WHERE (categorie = :categorie AND liste = :liste )")
+    LiveData<List<Mot>> getListNiveau(int categorie, int liste);
 
     @Query("SELECT * FROM Mot WHERE categorie = :niveau")
     List<Mot> getNiveauList(int niveau);

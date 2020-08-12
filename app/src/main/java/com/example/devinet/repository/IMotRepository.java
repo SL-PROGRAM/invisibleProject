@@ -12,6 +12,7 @@ public interface IMotRepository {
     LiveData<List<Mot>> get();
     List<Mot> getMotNiveau(int niveau);
     LiveData<List<Mot>> getMotNiveauLD(int categorie);
+    LiveData<List<Mot>> getListNiveau(int categorie, int liste);
     Mot get(int id);
     void update(Mot item);
     void delete(Mot item);

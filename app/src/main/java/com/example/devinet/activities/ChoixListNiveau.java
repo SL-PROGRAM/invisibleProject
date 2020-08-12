@@ -63,6 +63,7 @@ public class ChoixListNiveau extends AppCompatActivity {
                     }
                 });
             } else{
+
                 intent = new Intent(this,MenuActivity.class);
                 startActivity(intent);
             }

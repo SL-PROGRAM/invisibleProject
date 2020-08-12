@@ -43,6 +43,10 @@ public class MotVM extends AndroidViewModel {
         return motRepository.getMotNiveauLD(categorie);
     }
 
+    public LiveData<List<Mot>> getListNiveau(int categorie, int liste) {
+        return motRepository.getListNiveau(categorie, liste);
+    }
+
     void insert(Mot item)
     {
         motRepository.insert(item);

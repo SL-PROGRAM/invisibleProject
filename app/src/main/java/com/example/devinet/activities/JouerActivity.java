@@ -36,7 +36,7 @@ public class JouerActivity extends AppCompatActivity {
             if (mot != null){
 
                 MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
-                final LiveData<List<Mot>> observateur = vm.get();
+                final LiveData<List<Mot>> observateur = vm.getListNiveau(mot.getCategorie(), mot.getListe());
 
                 observateur.observe(this, new Observer<List<Mot>>() {
                     @Override
