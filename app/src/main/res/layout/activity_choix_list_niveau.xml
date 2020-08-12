@@ -10,22 +10,8 @@
         android:id="@+id/listView_choix_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_jouer"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="162dp"-->
-<!--        android:layout_marginTop="130dp"-->
-<!--        android:layout_marginEnd="162dp"-->
-<!--        android:text="List n°"-->
-<!--        android:background="@color/colorPrimary"-->
-<!--        android:textColor="@color/colorAccent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

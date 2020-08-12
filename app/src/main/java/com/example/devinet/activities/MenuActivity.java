@@ -40,20 +40,39 @@ public class MenuActivity extends AppCompatActivity {
 //        ** test insertion de donnée
 //         */
 //
-//        IMotRepository motRepository = new MotBddRepository(this);
 //        MotVM motVM = ViewModelProviders.of(this).get(MotVM.class);
-//
-//        LiveData<List<Mot>> observateurMot = motVM.get();
-//        String motSt = "mot";
+
+//        String motSt = "baba";
 //        int longeurMot = FonctionUtils.longueurMotPourNiveau(motSt);
+
+//        LiveData<List<Mot>> observateurMot = motVM.get();
+
+//        IMotRepository motRepository = new MotBddRepository(this);
+//        Mot mot1 = new Mot(1, "chemin de l'image", "chat", "proposition", 1,1);
+//        motRepository.insert(mot1);
+//        Mot mot2 = new Mot(2, "chemin de l'image", "juge", "proposition", 1,1);
+//        motRepository.insert(mot2);
+//        Mot mot3 = new Mot(3, "chemin de l'image", "bibi", "proposition", 1,1);
+//        motRepository.insert(mot3);
 //
+//        Mot mot4 = new Mot(4, "chemin de l'image", "baba", "proposition", 1,2);
+//        motRepository.insert(mot4);
+//        Mot mot5 = new Mot(5, "chemin de l'image", "toto", "proposition", 1,2);
+//        motRepository.insert(mot5);
+//        Mot mot6 = new Mot(6, "chemin de l'image", "tata", "proposition", 1,2);
+//        motRepository.insert(mot6);
+
 //        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
-//        Categorie categorie = new Categorie(0, "Categorie id");
-//        categorieRepository.insert(categorie);
+//        Categorie categorie1 = new Categorie(1, "4 lettres");
+//        categorieRepository.insert(categorie1);
+//        Categorie categorie2 = new Categorie(2, "5 lettres");
+//        categorieRepository.insert(categorie2);
+//        Categorie categorie3 = new Categorie(3, "6 lettres");
+//        categorieRepository.insert(categorie3);
+//        Categorie categorie4 = new Categorie(4, "7 lettres");
+//        categorieRepository.insert(categorie4);
 //
 //        CategorieVM categorieVM = ViewModelProviders.of(this).get(CategorieVM.class);
-//        Mot mot = new Mot(0, "chemin de l'image", motSt, "proposition", motSt.length(),FonctionUtils.definirNumeroList(longeurMot, this));
-//        motRepository.insert(mot);
 //
 //        observateurMot.observe(this, new Observer<List<Mot>>() {
 //            @Override

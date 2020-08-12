@@ -24,8 +24,6 @@ import java.util.List;
 
 public class SelectionNiveauActivity extends AppCompatActivity {
 
-    private ListView maListe = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

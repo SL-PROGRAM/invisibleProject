@@ -8,7 +8,7 @@ import com.example.devinet.repository.MotBddRepository;
 
 public class FonctionUtils {
 
-    public static final int NB_MOT_PAR_LISTE = 10;
+    public static final int NB_MOT_PAR_LISTE = 5;
     public static Context cx = null;
     public static int niv;
     public static int list;

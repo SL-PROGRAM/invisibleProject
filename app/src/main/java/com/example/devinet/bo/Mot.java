@@ -1,11 +1,14 @@
 package com.example.devinet.bo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
 
-public class Mot {
+public class Mot implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int idMot;
     private String img;
@@ -22,6 +25,27 @@ public class Mot {
         this.categorie = categorie;
         this.liste = liste;
     }
+
+    protected Mot(Parcel in) {
+        idMot = in.readInt();
+        img = in.readString();
+        mot = in.readString();
+        proposition = in.readString();
+        categorie = in.readInt();
+        liste = in.readInt();
+    }
+
+    public static final Creator<Mot> CREATOR = new Creator<Mot>() {
+        @Override
+        public Mot createFromParcel(Parcel in) {
+            return new Mot(in);
+        }
+
+        @Override
+        public Mot[] newArray(int size) {
+            return new Mot[size];
+        }
+    };
 
     public int getIdMot() {
         return idMot;
@@ -81,5 +105,20 @@ public class Mot {
                 ", categorie=" + categorie +
                 ", liste=" + liste +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(idMot);
+        parcel.writeString(img);
+        parcel.writeString(mot);
+        parcel.writeString(proposition);
+        parcel.writeInt(categorie);
+        parcel.writeInt(liste);
     }
 }
