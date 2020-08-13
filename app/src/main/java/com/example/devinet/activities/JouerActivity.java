@@ -64,12 +64,7 @@ public class JouerActivity extends AppCompatActivity {
                         motsList = mots;
                         Log.i("MOT", motsList.toString());
 
-                        for (Mot item : motsList){
-                            if (item.getMot() != item.getProposition()){
-                                motATrouver = item;
-                                break;
-                            }
-                        }
+                        definirMotATrouver();
 
                         ImageView imageView = findViewById(R.id.imgTrouve);
                         Resources res = getResources();
@@ -88,7 +83,10 @@ public class JouerActivity extends AppCompatActivity {
                                 motATrouver.setProposition(proposition);
                                 motRepository.update(motATrouver);
                                 //Restart de l'activity
+                                definirMotATrouver();
+
                                 Intent intent = new Intent(JouerActivity.this,JouerActivity.class);
+                                intent.putExtra("mot", motATrouver);
                                 startActivity(intent);
                             }
                         });
@@ -99,6 +97,15 @@ public class JouerActivity extends AppCompatActivity {
 
         for (Mot item : motsList){
             Log.i("MOT LIST", "onResume: "+ item.toString());
+        }
+    }
+
+    private void definirMotATrouver() {
+        for (Mot item : motsList){
+            if (!item.getMot().equalsIgnoreCase(item.getProposition())){
+                motATrouver = item;
+                break;
+            }
         }
     }
 
