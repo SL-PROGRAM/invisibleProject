@@ -8,21 +8,20 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.devinet.R;
-import com.example.devinet.activities.adapteur.CaseAdateur;
 import com.example.devinet.bo.Mot;
+import com.example.devinet.repository.IMotRepository;
+import com.example.devinet.repository.MotBddRepository;
 import com.example.devinet.view_model.MotVM;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +30,19 @@ public class JouerActivity extends AppCompatActivity {
     List<Mot> motsList = new ArrayList<>();
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_jouer);
+        getSupportActionBar().setTitle("Jouer");
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+
+        ImageView imgView = findViewById(R.id.imgTrouve);
+        imgView.setImageResource(R.drawable.juge);
 
         Intent intent = getIntent();
         if (intent != null){
@@ -46,10 +56,8 @@ public class JouerActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(List<Mot> mots) {
                         motsList = mots;
-                        Log.i("MOT", mot.toString());
-//                        ListView maListe = findViewById(R.id.lv_jouer_proposition);
-//                        CaseAdateur adapter = new CaseAdateur(JouerActivity.this,R.layout.activity_jouer,mots);
-//                        maListe.setAdapter(adapter);
+                        Log.i("MOT", motsList.toString());
+
                     }
                 });
             }
@@ -58,16 +66,6 @@ public class JouerActivity extends AppCompatActivity {
         for (Mot item : motsList){
             Log.i("MOT LIST", "onResume: "+ item.toString());
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jouer);
-        getSupportActionBar().setTitle("Jouer");
-
-        ImageView img = findViewById(R.id.imgTrouve);
-        img.setImageResource(R.drawable.hisoka);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,9 +92,22 @@ public class JouerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Les deux boutons font la même chose , à détail près que Valider donner +1 de progression
     public void onClickBtnValider(View view) {
+
+        setContentView(R.layout.activity_jouer);
+        Intent intent= new Intent(this,JouerActivity.class);
+        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        //Si mot trouvé alors progression +1
+//        ProgressBar pb_niveau = findViewById(R.id.progressBar_niveau);
+        //Récupérer la liste et mettre +1
+//        pb_niveau.setProgress(pb_niveau.getProgress() + 1);
+
     }
 
     public void onClickBtnNext(View view) {
+        setContentView(R.layout.activity_jouer);
+        Intent intent= new Intent(this,JouerActivity.class);
+        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 }

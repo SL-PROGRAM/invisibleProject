@@ -48,19 +48,19 @@ public class MenuActivity extends AppCompatActivity {
 //        LiveData<List<Mot>> observateurMot = motVM.get();
 
 //        IMotRepository motRepository = new MotBddRepository(this);
-//        Mot mot1 = new Mot(1, "chemin de l'image", "chat", "proposition", 1,1);
-//        motRepository.insert(mot1);
-//        Mot mot2 = new Mot(2, "chemin de l'image", "juge", "proposition", 1,1);
-//        motRepository.insert(mot2);
-//        Mot mot3 = new Mot(3, "chemin de l'image", "bibi", "proposition", 1,1);
-//        motRepository.insert(mot3);
+//        Mot mot1 = new Mot(1, "chat.jpg", "chat", "hcat", 1,1);
+//        motRepository.update(mot1);
+//        Mot mot2 = new Mot(2, "juge.jpg", "juge", "ugje", 1,1);
+//        motRepository.update(mot2);
+//        Mot mot3 = new Mot(3, "hisoka.jpg", "bibi", "biib", 1,1);
+//        motRepository.update(mot3);
 //
-//        Mot mot4 = new Mot(4, "chemin de l'image", "baba", "proposition", 1,2);
-//        motRepository.insert(mot4);
-//        Mot mot5 = new Mot(5, "chemin de l'image", "toto", "proposition", 1,2);
-//        motRepository.insert(mot5);
-//        Mot mot6 = new Mot(6, "chemin de l'image", "tata", "proposition", 1,2);
-//        motRepository.insert(mot6);
+//        Mot mot4 = new Mot(4, "chemin de l'image", "baba", "abab", 1,2);
+//        motRepository.update(mot4);
+//        Mot mot5 = new Mot(5, "chemin de l'image", "toto", "oott", 1,2);
+//        motRepository.update(mot5);
+//        Mot mot6 = new Mot(6, "chemin de l'image", "tata", "atta", 1,2);
+//        motRepository.update(mot6);
 
 //        ICategorieRepository categorieRepository = new CategorieBddRepository(this);
 //        Categorie categorie1 = new Categorie(1, "4 lettres");
