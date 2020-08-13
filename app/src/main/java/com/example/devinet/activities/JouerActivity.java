@@ -101,10 +101,15 @@ public class JouerActivity extends AppCompatActivity {
     }
 
     private void definirMotATrouver() {
+        int indice = 0;
         for (Mot item : motsList){
             if (!item.getMot().equalsIgnoreCase(item.getProposition())){
                 motATrouver = item;
                 break;
+            }
+            indice++;
+            if(indice == motsList.size()){
+                super.onBackPressed();
             }
         }
     }
