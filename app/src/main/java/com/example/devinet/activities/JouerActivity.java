@@ -6,15 +6,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.devinet.R;
 import com.example.devinet.bo.Mot;
@@ -22,12 +26,15 @@ import com.example.devinet.repository.IMotRepository;
 import com.example.devinet.repository.MotBddRepository;
 import com.example.devinet.view_model.MotVM;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class JouerActivity extends AppCompatActivity {
 
     List<Mot> motsList = new ArrayList<>();
+    Mot motATrouver = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +48,6 @@ public class JouerActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        ImageView imgView = findViewById(R.id.imgTrouve);
-        imgView.setImageResource(R.drawable.juge);
-
         Intent intent = getIntent();
         if (intent != null){
             final Mot mot = intent.getParcelableExtra("mot");
@@ -52,12 +56,42 @@ public class JouerActivity extends AppCompatActivity {
                 MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
                 final LiveData<List<Mot>> observateur = vm.getListNiveau(mot.getCategorie(), mot.getListe());
 
+                final IMotRepository motRepository = new MotBddRepository(this);
+
                 observateur.observe(this, new Observer<List<Mot>>() {
                     @Override
                     public void onChanged(List<Mot> mots) {
                         motsList = mots;
                         Log.i("MOT", motsList.toString());
 
+                        for (Mot item : motsList){
+                            if (item.getMot() != item.getProposition()){
+                                motATrouver = item;
+                                break;
+                            }
+                        }
+
+                        ImageView imageView = findViewById(R.id.imgTrouve);
+                        Resources res = getResources();
+                        int resourceId = res.getIdentifier(motATrouver.getImg(), "drawable", getPackageName() );
+                        imageView.setImageResource(resourceId);
+
+                        TextView tv_proposition = findViewById(R.id.tv_motMelange);
+                        tv_proposition.setText(motATrouver.getMot());
+
+                        TextView valider = findViewById(R.id.circle_add);
+                        valider.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                EditText et_proposition = findViewById(R.id.et_proposition);
+                                String proposition = et_proposition.getText().toString();
+                                motATrouver.setProposition(proposition);
+                                motRepository.update(motATrouver);
+                                //Restart de l'activity
+                                Intent intent = new Intent(JouerActivity.this,JouerActivity.class);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
             }
@@ -98,11 +132,6 @@ public class JouerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_jouer);
         Intent intent= new Intent(this,JouerActivity.class);
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        //Si mot trouvé alors progression +1
-//        ProgressBar pb_niveau = findViewById(R.id.progressBar_niveau);
-        //Récupérer la liste et mettre +1
-//        pb_niveau.setProgress(pb_niveau.getProgress() + 1);
-
     }
 
     public void onClickBtnNext(View view) {

@@ -48,11 +48,11 @@ public class MenuActivity extends AppCompatActivity {
 //        LiveData<List<Mot>> observateurMot = motVM.get();
 
 //        IMotRepository motRepository = new MotBddRepository(this);
-//        Mot mot1 = new Mot(1, "chat.jpg", "chat", "hcat", 1,1);
+//        Mot mot1 = new Mot(1, "chat", "chat", "hcat", 1,1);
 //        motRepository.update(mot1);
-//        Mot mot2 = new Mot(2, "juge.jpg", "juge", "ugje", 1,1);
+//        Mot mot2 = new Mot(2, "juge", "juge", "ugje", 1,1);
 //        motRepository.update(mot2);
-//        Mot mot3 = new Mot(3, "hisoka.jpg", "bibi", "biib", 1,1);
+//        Mot mot3 = new Mot(3, "hisoka", "bibi", "biib", 1,1);
 //        motRepository.update(mot3);
 //
 //        Mot mot4 = new Mot(4, "chemin de l'image", "baba", "abab", 1,2);
