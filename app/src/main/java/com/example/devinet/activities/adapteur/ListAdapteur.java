@@ -2,10 +2,12 @@ package com.example.devinet.activities.adapteur;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,6 +47,9 @@ public class ListAdapteur extends ArrayAdapter<Mot> {
 
         TextView tv_liste = nouvelleLigne.findViewById(R.id.tv_liste_nombre);
         tv_liste.setText(String.valueOf(getItem(position).getListe()));
+
+        ProgressBar pb = nouvelleLigne.findViewById(R.id.pb_list);
+        pb.setProgress(getItem(position).getProgress());
 
         return nouvelleLigne;
     }

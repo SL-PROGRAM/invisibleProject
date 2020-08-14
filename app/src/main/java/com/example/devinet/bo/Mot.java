@@ -16,14 +16,16 @@ public class Mot implements Parcelable {
     private String proposition;
     private int categorie;
     private int liste;
+    private int progress;
 
-    public Mot(int idMot, String img, String mot, String proposition, int categorie, int liste) {
+    public Mot(int idMot, String img, String mot, String proposition, int categorie, int liste, int progress) {
         this.idMot = idMot;
         this.img = img;
         this.mot = mot;
         this.proposition = proposition;
         this.categorie = categorie;
         this.liste = liste;
+        this.progress = progress;
     }
 
     protected Mot(Parcel in) {
@@ -33,6 +35,7 @@ public class Mot implements Parcelable {
         proposition = in.readString();
         categorie = in.readInt();
         liste = in.readInt();
+        progress = in.readInt();
     }
 
     public static final Creator<Mot> CREATOR = new Creator<Mot>() {
@@ -95,6 +98,10 @@ public class Mot implements Parcelable {
         this.liste = liste;
     }
 
+    public int getProgress() { return progress; }
+
+    public void setProgress(int progress) { this.progress = progress; }
+
     @Override
     public String toString() {
         return "Mot{" +
@@ -104,6 +111,7 @@ public class Mot implements Parcelable {
                 ", proposition='" + proposition + '\'' +
                 ", categorie=" + categorie +
                 ", liste=" + liste +
+                ", progress=" + progress +
                 '}';
     }
 
@@ -120,5 +128,6 @@ public class Mot implements Parcelable {
         parcel.writeString(proposition);
         parcel.writeInt(categorie);
         parcel.writeInt(liste);
+        parcel.writeInt(progress);
     }
 }

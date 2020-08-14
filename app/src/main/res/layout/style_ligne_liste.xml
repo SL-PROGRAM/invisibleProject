@@ -44,7 +44,7 @@
             android:textSize="14sp" />
 
         <ProgressBar
-            android:id="@+id/progressBar_niveau"
+            android:id="@+id/pb_list"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="200dp"
             android:layout_height="wrap_content"

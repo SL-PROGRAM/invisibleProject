@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.devinet.R;
 import com.example.devinet.activities.adapteur.ListAdapteur;
@@ -39,6 +40,7 @@ public class ChoixListNiveau extends AppCompatActivity {
         super.onResume();
         Intent intent = getIntent();
         if (intent != null) {
+
             final Categorie categorie = intent.getParcelableExtra("categorie");
             if (categorie != null){
                 MotVM vm = ViewModelProviders.of(this).get(MotVM.class);
@@ -50,6 +52,7 @@ public class ChoixListNiveau extends AppCompatActivity {
                     public void onChanged(List<Mot> mots) {
 
                         Log.i("NIVEAU", categorie.toString());
+                        int cpt = 0 ;
                         List<Mot> motUniqueList = new ArrayList<>();
                         motUniqueList.add(mots.get(1));
                         for (int i = 2; i < mots.size(); i++) {
@@ -69,11 +72,6 @@ public class ChoixListNiveau extends AppCompatActivity {
             }
 
         }
-    }
-
-    public void onClickBtnList(View view) {
-        Intent intent = new Intent(this,JouerActivity.class);
-        startActivity(intent);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

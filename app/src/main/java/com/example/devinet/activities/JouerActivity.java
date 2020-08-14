@@ -19,14 +19,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.devinet.R;
 import com.example.devinet.bo.Mot;
 import com.example.devinet.repository.IMotRepository;
 import com.example.devinet.repository.MotBddRepository;
 import com.example.devinet.view_model.MotVM;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,8 +81,30 @@ public class JouerActivity extends AppCompatActivity {
                                 String proposition = et_proposition.getText().toString();
                                 motATrouver.setProposition(proposition);
                                 motRepository.update(motATrouver);
-                                //Restart de l'activity
-                                definirMotATrouver();
+
+                                if(motATrouver.getMot().equalsIgnoreCase(proposition)){
+                                    Toast.makeText(JouerActivity.this, "Bravo, vous avez trouvé! " , Toast.LENGTH_SHORT).show();
+                                    motATrouver.setProgress(1);
+                                    motRepository.update(motATrouver);
+                                }
+                                else {
+                                    Toast.makeText(JouerActivity.this, "Mauvaise réponse! " , Toast.LENGTH_SHORT).show();
+                                }
+
+                                Intent intent = new Intent(JouerActivity.this,JouerActivity.class);
+                                intent.putExtra("mot", motATrouver);
+                                startActivity(intent);
+                            }
+                        });
+
+                        TextView suivant = findViewById(R.id.circle_next);
+                        suivant.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                motATrouver.setProposition(motATrouver.getMot());
+                                motRepository.update(motATrouver);
+                                motATrouver.setProgress(0);
+                                motRepository.update(motATrouver);
 
                                 Intent intent = new Intent(JouerActivity.this,JouerActivity.class);
                                 intent.putExtra("mot", motATrouver);
@@ -109,7 +130,8 @@ public class JouerActivity extends AppCompatActivity {
             }
             indice++;
             if(indice == motsList.size()){
-                super.onBackPressed();
+                Intent intent = new Intent(this,SelectionNiveauActivity.class);
+                startActivity(intent);
             }
         }
     }
@@ -136,19 +158,5 @@ public class JouerActivity extends AppCompatActivity {
     public void onClickActionAccueil(MenuItem item) {
         Intent intent = new Intent(this,MenuActivity.class);
         startActivity(intent);
-    }
-
-    // Les deux boutons font la même chose , à détail près que Valider donner +1 de progression
-    public void onClickBtnValider(View view) {
-
-        setContentView(R.layout.activity_jouer);
-        Intent intent= new Intent(this,JouerActivity.class);
-        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-    }
-
-    public void onClickBtnNext(View view) {
-        setContentView(R.layout.activity_jouer);
-        Intent intent= new Intent(this,JouerActivity.class);
-        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 }
