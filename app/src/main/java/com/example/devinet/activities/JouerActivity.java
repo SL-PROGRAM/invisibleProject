@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,8 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +36,6 @@ public class JouerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jouer);
         getSupportActionBar().setTitle("Jouer");
-
     }
 
     @Override
@@ -71,7 +66,7 @@ public class JouerActivity extends AppCompatActivity {
                         imageView.setImageResource(resourceId);
 
                         TextView tv_proposition = findViewById(R.id.tv_motMelange);
-                        tv_proposition.setText(motATrouver.getMot());
+                        tv_proposition.setText(motATrouver.getProposition());
 
                         TextView valider = findViewById(R.id.circle_add);
                         valider.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +83,7 @@ public class JouerActivity extends AppCompatActivity {
                                     motRepository.update(motATrouver);
                                 }
                                 else {
-                                    Toast.makeText(JouerActivity.this, "Mauvaise réponse! " , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(JouerActivity.this, "Mauvaise réponse!" , Toast.LENGTH_SHORT).show();
                                 }
 
                                 Intent intent = new Intent(JouerActivity.this,JouerActivity.class);
